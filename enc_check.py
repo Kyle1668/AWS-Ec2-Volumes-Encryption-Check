@@ -19,13 +19,22 @@ def get_regions(regions_json_data):
 		regions.append(region_object['RegionName'])
 		
 	return regions
+	
+
+def get_ec2_volumes(regions):
+	volumes = []
+
+	for region in regions:
+		volumes_in_region = get_json(['aws', 'ec2', 'describe-volumes', '--region', region])
+		for volume in volumes_in_region['Volumes']:
+			print_results(volume)
+
 
 
 def main():
 	regions = get_regions(get_json(['aws', 'ec2', 'describe-regions']))
-	ec2_volumes = get_json(['aws', 'ec2', 'describe-volumes', '--region', 'us-east-2'])
+	ec2_volumes = get_ec2_volumes(regions) 
 
-	print_results(regions)
 
 main()
 
