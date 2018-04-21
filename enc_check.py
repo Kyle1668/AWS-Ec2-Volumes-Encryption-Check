@@ -1,6 +1,10 @@
-from colors import bcolors
+"""
+    AWS EC2 Volumes Check
+"""
+
 import json
-import subprocess
+import subprocess¡
+from colors import bcolors
 
 
 def get_json(command):
@@ -47,7 +51,7 @@ def get_regions(regions_json_data):
 
 
 def get_ec2_volumes(regions):
-    """[Iterates through each AWS region and retireves the volumes]
+    """[Iterates through each AWS region and retrieves the volumes]
 
     Arguments:
         regions {[list]} -- [List of AWS regions as strings]
